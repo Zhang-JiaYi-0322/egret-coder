@@ -1,0 +1,49 @@
+{
+	"egret class": {
+		"prefix": "classEgret",
+		"body": [
+			"module ${abc} {",
+			"\t",
+			"\t/**",
+			"\t * $1",
+			"\t */",
+			"\texport class ${Abc} extends ${egret.Sprite} {",
+			"\t\t",
+			"\t\tconstructor(){",
+			"\t\t\tsuper();",
+			"\t\t\t$2",
+			"\t\t}",
+			"\t}",
+			"}"
+		],
+		"description": "egret class"
+	},
+	"eui Component":{
+		"prefix": "euiComponent",
+		"body": [
+			"module ${abc} {",
+			"\t",
+			"\t/**",
+			"\t * $1",
+			"\t */",
+			"\texport class ${Abc} extends ${eui.Component} {",
+			"\t\t",
+			"\t\tconstructor(){",
+			"\t\t\tsuper();",
+			"\t\t\t$2",
+			"\t\t}",
+			"",
+			"\t\tprotected childrenCreated(): void {",
+			"\t\t",
+			"\t\t}",
+			"",
+			"\t\tprotected partAdded(partName: string,instance: any): void {",
+			"\t\t\tsuper.partAdded(partName,instance);",
+			"\t\t",
+			"\t\t}",
+			"\t}",
+			"}"
+		],
+		"description": "egret class"
+	}
+}

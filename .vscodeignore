@@ -1,0 +1,16 @@
+.gitignore
+.vscode/**
+.vscode-test/**
+
+src/**
+test/**
+tsconfig.json
+tslint.json
+package-lock.json
+gulpfile.js
+
+images/README*.png
+
+out/test/**
+out/**/*.map
+*.vsix

@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "removeComments": false,
+        "target": "ES6",
+        "allowJs": true,
+        "outDir": "out",
+        "lib": [
+            "es2016"
+        ],
+        "noImplicitThis": true,
+        "sourceMap": true
+    },
+    "exclude": [
+        "node_modules/",
+        "out/**/*",
+        "gulpfile.js",
+    ],
+    "include": [
+        "src/**/*"
+    ]
+}

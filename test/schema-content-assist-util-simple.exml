@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" class="GameFightSkin">
+  <!-- this is a comment 这是一段注释 -->
+  <!-- <e:Image id="Img_TopBg" left="0" right="0" top="74" bottom="118" source="bg_410001_jpg"/> -->
+  <e:Image id="Img_TopBg" left="0" right="0" top="74" bottom="118" source="bg_410001_jpg"/>
+	<e:Group>
+		<e:Label id="dd" />
+	</e:Group>
+  <![CDATA[
+  Within this Character Data block I can
+  use double dashes as much as I want (along with <, &, ', and ")
+  *and* %MyParamEntity; will be expanded to the text
+  "Has been expanded" ... however, I can't use
+  the CEND sequence. If I need to use CEND I must escape one of the
+  brackets or the greater-than sign using concatenated CDATA sections.
+  ]]>
+  <e:Image id="Img_FightBg" left="0" right="0" bottom="118z" source="GameMainSceneBg_png" top="74"/>
+</e:Skin>
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin id="dashes" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+  </>
+  <e:Bitmap alpha="31" blendMode="" blendMode="" blendMode="erase"
+</e:Skin>

@@ -1,0 +1,515 @@
+{
+  "name": "coder",
+  "displayName": "Egret Coder",
+  "description": "Egret support for Visual Studio Code",
+  "version": "0.1.21",
+  "publisher": "egretengine",
+  "engines": {
+    "vscode": "^1.25.0"
+  },
+  "icon": "images/logo.png",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zhang-JiaYi-egret/egret-coder"
+  },
+  "categories": [
+    "Debuggers",
+    "Extension Packs",
+    "Language Packs"
+  ],
+  "activationEvents": [
+    "workspaceContains:egretProperties.json",
+    "onDebugInitialConfigurations",
+    "onDebugResolve:chrome",
+    "onCommand:extension.chrome-debug.toggleSkippingFile",
+    "onCommand:extension.getWebsitePort"
+  ],
+  "main": "./out/extension",
+  "contributes": {
+    "languages": [
+      {
+        "id": "exml",
+        "extensions": [
+          ".exml"
+        ],
+        "aliases": [
+          "EXML",
+          "exml"
+        ],
+        "firstLine": "(\\<\\?xml.*)",
+        "configuration": "./exml.configuration.json",
+        "mimetypes": [
+          "text/exml"
+        ]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "exml",
+        "scopeName": "text.exml",
+        "path": "./syntaxes/EXML.plist"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "exml",
+        "path": "./snippets/exml.json"
+      }
+    ],
+    "taskDefinitions": [
+      {
+        "type": "egret",
+        "required": [
+          "isBackground",
+          "problemMatcher"
+        ],
+        "properties": {
+          "task": {
+            "type": "string",
+            "title": "Egret Build",
+            "description": "the task to execute"
+          },
+          "command": {
+            "type": "string",
+            "description": "the command",
+            "default": "egret build"
+          },
+          "isBackground": {
+            "type": "boolean",
+            "default": true
+          },
+          "problemMatcher": {
+            "type": "string",
+            "default": "$egret"
+          }
+        }
+      }
+    ],
+    "breakpoints": [
+      {
+        "language": "javascript"
+      },
+      {
+        "language": "typescriptreact"
+      },
+      {
+        "language": "javascriptreact"
+      },
+      {
+        "language": "typescript"
+      }
+    ],
+    "debuggers": [
+      {
+        "type": "Egret",
+        "label": "Egret Debugger",
+        "program": "./out/project/debug/chromeDebug.js",
+        "runtime": "node",
+        "aiKey": "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217",
+        "languages": [
+          "javascript",
+          "typescript",
+          "javascriptreact",
+          "typescriptreact"
+        ],
+        "variables": {
+          "WebsitePort": "extension.getWebsitePort"
+        },
+        "configurationSnippets": [
+          {
+            "label": "Egret Debugger",
+            "description": "Launch Chrome to debug a Egret project",
+            "body": {
+              "type": "Egret",
+              "request": "launch",
+              "name": "Egret Debugger",
+              "url": "^\"http://localhost:\\${command:WebsitePort}\"",
+              "webRoot": "^\"\\${workspaceFolder\\}\"",
+              "sourceMaps": true,
+              "userDataDir": "^\"\\${tmpdir\\}\""
+            }
+          },
+          {
+            "label": "Egret WebpackDevServer Debugger",
+            "description": "Launch Chrome to debug a Egret project",
+            "body": {
+              "type": "Egret",
+              "request": "launch",
+              "name": "Egret WebpackDevServer Debugger",
+              "url": "^\"http://localhost:3000\"",
+              "webRoot": "^\"\\${workspaceFolder\\}\"",
+              "preLaunchTask": "egret: build"
+            }
+          }
+        ],
+        "configurationAttributes": {
+          "launch": {
+            "required": [],
+            "properties": {
+              "port": {
+                "type": "number",
+                "description": "%chrome.port.description%",
+                "default": 9222
+              },
+              "address": {
+                "type": "string",
+                "description": "%chrome.address.description%",
+                "default": "127.0.0.1"
+              },
+              "file": {
+                "type": "string",
+                "description": "%chrome.file.description%",
+                "default": "${workspaceFolder}/index.html"
+              },
+              "url": {
+                "type": "string",
+                "description": "%chrome.url.description%",
+                "default": "http://localhost:8080"
+              },
+              "webRoot": {
+                "type": "string",
+                "description": "%chrome.webRoot.description%",
+                "default": "${workspaceFolder}"
+              },
+              "pathMapping": {
+                "type": "object",
+                "description": "%chrome.pathMapping.description%",
+                "default": {
+                  "/": "${workspaceFolder}"
+                }
+              },
+              "runtimeExecutable": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "%chrome.runtimeExecutable.description%",
+                "default": null
+              },
+              "runtimeArgs": {
+                "type": "array",
+                "description": "%chrome.runtimeArgs.description%",
+                "items": {
+                  "type": "string"
+                },
+                "default": []
+              },
+              "env": {
+                "type": "object",
+                "description": "%chrome.env.description%",
+                "default": {}
+              },
+              "cwd": {
+                "type": "string",
+                "description": "%chrome.cwd.description%",
+                "default": null
+              },
+              "sourceMaps": {
+                "type": "boolean",
+                "description": "%chrome.sourceMaps.description%",
+                "default": true
+              },
+              "diagnosticLogging": {
+                "type": "boolean",
+                "description": "%chrome.diagnosticLogging.description%",
+                "default": true,
+                "deprecationMessage": "'diagnosticLogging' is deprecated. Use 'trace' instead."
+              },
+              "verboseDiagnosticLogging": {
+                "type": "boolean",
+                "description": "%chrome.verboseDiagnosticLogging.description%",
+                "default": true,
+                "deprecationMessage": "'verboseDiagnosticLogging' is deprecated. Use 'trace' instead."
+              },
+              "trace": {
+                "type": [
+                  "boolean",
+                  "string"
+                ],
+                "enum": [
+                  "verbose",
+                  true
+                ],
+                "default": true,
+                "description": "%chrome.trace.description%"
+              },
+              "userDataDir": {
+                "type": [
+                  "string",
+                  "boolean"
+                ],
+                "description": "%chrome.userDataDir.description%",
+                "default": true
+              },
+              "sourceMapPathOverrides": {
+                "type": "object",
+                "description": "%chrome.sourceMapPathOverrides.description%",
+                "default": {
+                  "webpack:///./*": "${webRoot}/*",
+                  "webpack:///src/*": "${webRoot}/*",
+                  "webpack:///*": "*",
+                  "webpack:///./~/*": "${webRoot}/node_modules/*",
+                  "meteor://💻app/*": "${webRoot}/*"
+                }
+              },
+              "smartStep": {
+                "type": "boolean",
+                "description": "%chrome.smartStep.description%",
+                "default": true
+              },
+              "skipFiles": {
+                "type": "array",
+                "description": "%chrome.skipFiles.description%",
+                "default": []
+              },
+              "timeout": {
+                "type": "number",
+                "description": "%chrome.timeout.description%",
+                "default": 10000
+              },
+              "disableNetworkCache": {
+                "type": "boolean",
+                "description": "%chrome.disableNetworkCache.description%",
+                "default": true
+              },
+              "urlFilter": {
+                "type": "string",
+                "description": "%chrome.urlFilter.description%",
+                "default": ""
+              },
+              "showAsyncStacks": {
+                "type": "boolean",
+                "description": "%chrome.showAsyncStacks.description%",
+                "default": true
+              },
+              "breakOnLoad": {
+                "type": "boolean",
+                "description": "%chrome.breakOnLoad.description%",
+                "default": true
+              },
+              "breakOnLoadStrategy": {
+                "type": "string",
+                "enum": [
+                  "instrument",
+                  "regex"
+                ],
+                "enumDescriptions": [
+                  "%chrome.breakOnLoadStrategy.instrument.description%",
+                  "%chrome.breakOnLoadStrategy.regex.description%"
+                ],
+                "description": "%chrome.breakOnLoadStrategy.description%",
+                "default": "instrument"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "commands": [
+      {
+        "command": "extension.egretBuild",
+        "category": "Egret",
+        "title": "%egret.project.compile%"
+      },
+      {
+        "command": "extension.egretClean",
+        "category": "Egret",
+        "title": "%egret.project.clean%"
+      },
+      {
+        "command": "extension.egretRun",
+        "category": "Egret",
+        "title": "%egret.project.run%"
+      },
+      {
+        "command": "extension.egretCreate",
+        "category": "Egret",
+        "title": "%egret.project.new%"
+      },
+      {
+        "command": "extension.egretPublish",
+        "category": "Egret",
+        "title": "%egret.project.public%"
+      },
+      {
+        "command": "extension.egretOpenEUIProject",
+        "category": "Egret",
+        "title": "%egret.project.openWithEUI%"
+      },
+      {
+        "command": "extension.egretServer",
+        "category": "Egret",
+        "title": "%egret.debug.startServer%"
+      },
+      {
+        "command": "extension.euiOpenExml",
+        "category": "Egret",
+        "title": "%egret.file.openWithEUI%",
+        "icon": {
+          "light": "./images/publish.svg",
+          "dark": "./images/publish.svg"
+        }
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "extension.egretBuild"
+        },
+        {
+          "command": "extension.egretClean"
+        },
+        {
+          "command": "extension.egretRun"
+        },
+        {
+          "command": "extension.egretCreate"
+        },
+        {
+          "command": "extension.egretPublish"
+        },
+        {
+          "command": "extension.egretServer"
+        }
+      ],
+      "editor/title": [
+        {
+          "when": "resourceExtname == .exml",
+          "command": "extension.euiOpenExml",
+          "group": "1_run@1"
+        }
+      ],
+      "explorer/context": [
+        {
+          "when": "resourceExtname == .exml",
+          "command": "extension.euiOpenExml",
+          "group": "navigation@1"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "when": "resourceExtname == .exml",
+          "command": "extension.euiOpenExml",
+          "group": "navigation@1"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "extension.egretPublish",
+        "key": "ctrl+alt+p",
+        "mac": "cmd+alt+p"
+      },
+      {
+        "command": "extension.egretServer",
+        "key": "ctrl+alt+s",
+        "mac": "cmd+alt+s"
+      },
+      {
+        "command": "extension.egretRun",
+        "key": "ctrl+alt+u",
+        "mac": "cmd+alt+u"
+      },
+      {
+        "command": "extension.egretBuild",
+        "key": "ctrl+alt+b",
+        "mac": "cmd+alt+b"
+      },
+      {
+        "command": "extension.egretClean",
+        "key": "ctrl+alt+c",
+        "mac": "cmd+alt+c"
+      },
+      {
+        "command": "extension.egretCreate",
+        "key": "ctrl+alt+n",
+        "mac": "cmd+alt+n"
+      },
+      {
+        "command": "extension.egretOpenEUIProject",
+        "key": "ctrl+alt+e",
+        "mac": "cmd+alt+e"
+      }
+    ],
+    "problemMatchers": [
+      {
+        "name": "egret",
+        "owner": "typescript",
+        "fileLocation": "relative",
+        "pattern": {
+          "regexp": "^([^\\s].*)\\((\\d+|\\,\\d+|\\d+,\\d+,\\d+,\\d+)\\):\\s+(error|warning|info)\\s+(TS\\d+)\\s*:\\s*(.*)$",
+          "file": 1,
+          "location": 2,
+          "severity": 3,
+          "code": 4,
+          "message": 5
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": "Version: webpack.+"
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "package": "gulp package",
+    "ut": "mocha",
+    "vscode:prepublish": "gulp verify-no-linked-modules",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test",
+    "build": "gulp build"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.42",
+    "@types/mockery": "^1.4.29",
+    "@types/node": "^7.10.13",
+    "@types/qr-image": "^3.2.3",
+    "@types/source-map": "^0.1.27",
+    "@types/tmp": "0.0.32",
+    "concurrently": "^3.1.0",
+    "del": "^3.0.0",
+    "eslint": "^4.6.1",
+    "event-stream": "^3.3.5",
+    "glob": "^7.1.6",
+    "gulp": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-tslint": "^8.1.4",
+    "gulp-typescript": "^4.0.1",
+    "gulp-util": "^3.0.8",
+    "http-server": "^0.10.0",
+    "minimist": "^1.2.5",
+    "mocha": "^5.2.0",
+    "mockery": "^1.7.0",
+    "run-sequence": "^2.2.0",
+    "tmp": "0.0.31",
+    "ts-loader": "^1.0.0",
+    "tslint": "^5.20.1",
+    "typemoq": "^2.1.0",
+    "typescript": "^4.0.3",
+    "vsce": "^1.81.1",
+    "vscode": "^1.1.37",
+    "vscode-chrome-debug-core-testsupport": "^3.20.0",
+    "vscode-debugadapter-testsupport": "1.24.0",
+    "vscode-debugprotocol": "^1.42.0",
+    "vscode-nls-dev": "^3.3.2"
+  },
+  "dependencies": {
+    "comment-json": "^4.1.0",
+    "fs": "0.0.1-security",
+    "node-cmd": "^3.0.0",
+    "opn": "^5.5.0",
+    "qr-image": "^3.2.0",
+    "semver": "^5.7.1",
+    "static-server": "^2.2.1",
+    "vscode-chrome-debug-core": "^6.8.9",
+    "vscode-debugadapter": "^1.42.1",
+    "vscode-jsonrpc": "^3.6.2",
+    "vscode-languageclient": "^4.1.4",
+    "vscode-languageserver": "^4.1.3",
+    "vscode-nls": "^3.2.5"
+  }
+}
