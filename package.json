@@ -347,7 +347,7 @@
         "category": "Egret",
         "title": "%egret.file.openWithEUI%",
         "icon": {
-          "light": "./images/publish.svg",
+          "light": "./images/publish_black.svg",
           "dark": "./images/publish.svg"
         }
       }
@@ -377,7 +377,7 @@
         {
           "when": "resourceExtname == .exml",
           "command": "extension.euiOpenExml",
-          "group": "1_run@1"
+          "group": "navigation@1"
         }
       ],
       "explorer/context": [
