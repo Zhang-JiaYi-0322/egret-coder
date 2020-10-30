@@ -44,6 +44,10 @@ export class DebugFileServer {
             }
         });
         this._server = myStaticServer;
+        this._server.on('request', function (req, res) {
+            // 断点续传有bug，强制转换为非断点续传
+            delete req.headers.range
+          });
         return this._server;
     }
 
