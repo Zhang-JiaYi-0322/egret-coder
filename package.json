@@ -2,7 +2,7 @@
   "name": "coder",
   "displayName": "Egret Coder",
   "description": "Egret support for Visual Studio Code",
-  "version": "0.1.23",
+  "version": "0.1.232",
   "publisher": "egretengine",
   "engines": {
     "vscode": "^1.25.0"

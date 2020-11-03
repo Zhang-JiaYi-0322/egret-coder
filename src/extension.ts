@@ -19,7 +19,8 @@ const project = new Project();
 let customTaskProvider: vscode.Disposable | undefined;
 vscode.debug.onDidTerminateDebugSession(() => {
     for (let child of vscode.tasks.taskExecutions) {
-        if (child.task.name = "egret: build") {
+        if (child.task.name == "egret: build" ||
+        child.task.name == "egret build") {
             child.terminate();
             break;
         }
@@ -43,7 +44,7 @@ vscode.debug.onDidTerminateDebugSession(() => {
     console.log("port: " + port);
     cmd.get(`netstat -aon|findstr "${port}"`,
         (err, data, stderr) => {
-            // console.log(data)
+            console.log(data)
             data.split("TCP").map((item: string) => {
                 if (item.search(/\d+/) > -1) {
                     let arr = [];
