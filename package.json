@@ -395,43 +395,6 @@
         }
       ]
     },
-    "keybindings": [
-      {
-        "command": "extension.egretPublish",
-        "key": "ctrl+alt+p",
-        "mac": "cmd+alt+p"
-      },
-      {
-        "command": "extension.egretServer",
-        "key": "ctrl+alt+s",
-        "mac": "cmd+alt+s"
-      },
-      {
-        "command": "extension.egretRun",
-        "key": "ctrl+alt+u",
-        "mac": "cmd+alt+u"
-      },
-      {
-        "command": "extension.egretBuild",
-        "key": "ctrl+alt+b",
-        "mac": "cmd+alt+b"
-      },
-      {
-        "command": "extension.egretClean",
-        "key": "ctrl+alt+c",
-        "mac": "cmd+alt+c"
-      },
-      {
-        "command": "extension.egretCreate",
-        "key": "ctrl+alt+n",
-        "mac": "cmd+alt+n"
-      },
-      {
-        "command": "extension.egretOpenEUIProject",
-        "key": "ctrl+alt+e",
-        "mac": "cmd+alt+e"
-      }
-    ],
     "problemMatchers": [
       {
         "name": "egret",

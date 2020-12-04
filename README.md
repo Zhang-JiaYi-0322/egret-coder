@@ -115,18 +115,3 @@
   }
   ```
 
----
-
-## 按键绑定
-
-> 下表中的 `cmd` 键在 Windows 平台是 `ctrl` 键
-
-| 按键 | 功能 |
-|---|---|
-| cmd+alt+n | 创建新项目 |
-| cmd+alt+p | 发布项目 |
-| cmd+alt+u | 运行项目 |
-| cmd+alt+b | 编译项目 |
-| cmd+alt+c | 清理项目 |
-| cmd+alt+e | 启动 `Egret UI Editor` 打开项目 |
-| cmd+alt+s | 启动调试服务器 |
